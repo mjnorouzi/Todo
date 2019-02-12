@@ -1,28 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {observer,inject} from 'mobx-react';
+import TodoEntry from './components/TodoEntry'
+import TodoItems from './components/TodoItems'
+import TodoMenu from './components/TodoMenu'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+      <div className="todoapp" id="todoapp">
+        <TodoEntry/>
+        <TodoItems/>
+        <TodoMenu />
+
+
+
+
+          {/* <img onClick={()=> this.props.store.changemsg()} src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            {this.props.store.s_item.msg}
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+          <div>{this.props.store.s_item.time}</div>
+          <div>
+            <button onClick={()=> this.props.store.pauseClock()}>pause</button>     
+            <button onClick={()=> this.props.store.startClock()}>start</button>
+          </div> */}
+        
       </div>
     );
   }
 }
 
-export default App;
+export default inject('store')(observer(App));
